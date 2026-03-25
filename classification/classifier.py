@@ -8,8 +8,8 @@ from core.interfaces import EmailClassifier, ClassificationResult
 logger = logging.getLogger(__name__)
 
 
-class NaiveBayesClassifier(EmailClassifier):
-    """Classifies text using a pre-trained scikit-learn Pipeline (TF-IDF + MultinomialNB)."""
+class LogisticRegressionClassifier(EmailClassifier):
+    """Classifies text using a pre-trained scikit-learn Pipeline (TF-IDF + LogisticRegression)."""
 
     def __init__(self, model_path: Path, confidence_threshold: float = 0.75) -> None:
         self._threshold = confidence_threshold

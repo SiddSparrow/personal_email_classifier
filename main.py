@@ -17,7 +17,7 @@ from core.interfaces import (
 from core.config import load_config, setup_logging, AppConfig
 from reader.gmail_reader import GmailReader
 from preprocessing.preprocessor import NLPPreprocessor
-from classification.classifier import NaiveBayesClassifier
+from classification.classifier import LogisticRegressionClassifier
 from notification.notifier import TelegramNotifier
 from state.state_manager import JsonStateManager
 
@@ -127,7 +127,7 @@ def build_pipeline(config: AppConfig) -> EmailPipeline:
         query=config.gmail_query,
     )
     preprocessor = NLPPreprocessor(use_stemmer=True)
-    classifier = NaiveBayesClassifier(
+    classifier = LogisticRegressionClassifier(
         model_path=config.model_path,
         confidence_threshold=config.confidence_threshold,
     )

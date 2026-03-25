@@ -11,7 +11,7 @@ import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
 from core.config import load_config, setup_logging
@@ -51,14 +51,14 @@ def load_training_data(
 
 
 def build_sklearn_pipeline() -> Pipeline:
-    """Build TF-IDF + Naive Bayes pipeline as specified in doc."""
+    """Build TF-IDF + Logistic Regression pipeline."""
     return Pipeline([
         ("tfidf", TfidfVectorizer(
             ngram_range=(1, 2),
             max_features=10000,
             sublinear_tf=True,
         )),
-        ("clf", MultinomialNB(alpha=0.1)),
+        ("clf", LogisticRegression(C=1.0, max_iter=1000)),
     ])
 
 
