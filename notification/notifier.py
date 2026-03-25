@@ -44,11 +44,11 @@ class TelegramNotifier(Notifier):
         e = pe.email
         c = pe.classification
         return (
-            "🚨 <b>Nova Oferta de Emprego Detectada!</b>\n\n"
-            f"📌 <b>Assunto:</b> {e.subject}\n"
-            f"👤 <b>De:</b> {e.sender_name} &lt;{e.sender_email}&gt;\n"
-            f"📅 <b>Data:</b> {e.date}\n"
-            f"🎯 <b>Confiança:</b> {c.confidence:.1%}\n\n"
-            f"📝 <b>Prévia:</b>\n{pe.preview}\n\n"
+            "🚨 <b>Feedback Recebido!</b>\n\n"
+            f" <b>Assunto:</b> {e.subject}\n"
+            f" <b>De:</b> {e.sender_name} &lt;{e.sender_email}&gt;\n"
+            f" <b>Data:</b> {e.date}\n"
+            f" <b>Confiança:</b> {c.confidence:.1%}\n\n"
+            f" <b>Prévia:</b>\n{pe.preview}\n\n"
             f'🔗 <a href="{e.gmail_link}">Abrir no Gmail</a>'
         )
