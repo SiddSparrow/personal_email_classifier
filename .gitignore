@@ -1,0 +1,22 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+
+# Secrets
+credentials.json
+credentials/token.json
+
+# Generated artifacts
+models/model.pkl
+data/state.json
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

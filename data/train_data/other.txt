@@ -1,0 +1,77 @@
+Sua fatura do cartão de crédito Nubank está disponível. Valor: R$1.234,56. Vencimento: 15/04.
+Promoção relâmpago! 50% de desconto em todos os cursos da Udemy. Válido até domingo.
+Newsletter semanal: As 10 tendências de tecnologia para 2026. Leia agora no nosso blog.
+Seu pedido #12345 foi enviado! Acompanhe a entrega pelo link de rastreamento.
+Lembrete: sua assinatura do Spotify Premium será renovada em 3 dias. Valor: R$21,90.
+Amazon - Oferta do dia: Echo Dot por apenas R$199. Frete grátis para membros Prime.
+Confirmação de pagamento: Transferência de R$500,00 realizada com sucesso via Pix.
+GitHub notification: User @john commented on your pull request #42 in repo email-classifier.
+Alerta de segurança: Novo login detectado na sua conta Google em dispositivo desconhecido.
+Bem-vindo ao curso de Machine Learning! Sua primeira aula está disponível na plataforma.
+Atualização dos termos de uso do serviço iCloud. Leia e aceite para continuar usando.
+Seu voo GRU-GIG foi confirmado para 15/04 às 14:30. Faça check-in online em até 24h antes.
+Relatório mensal de gastos do seu cartão Inter. Você gastou R$3.456 em março.
+Netflix: Novos títulos adicionados esta semana. Confira as recomendações personalizadas para você.
+Reminder: Your AWS bill for March is $45.67. View your billing dashboard for details.
+Boleto registrado: Condomínio referente a abril/2026. Valor: R$890,00. Vencimento: 10/04.
+Stack Overflow Weekly Newsletter: Top questions in Python this week. 15 new answers.
+Mercado Livre - Seu produto foi entregue! Confirme o recebimento e avalie o vendedor.
+Convite para webinar: Como usar inteligência artificial na prática. Quinta-feira, 19h.
+Your subscription to The New York Times has been renewed. Next billing date: April 15.
+iFood: Seu pedido está a caminho! Tempo estimado de entrega: 35 minutos.
+Atualização importante do Windows 11. Reinicie seu computador para aplicar as atualizações.
+Promoção Magazine Luiza: Smart TV 55 polegadas por 12x de R$199. Aproveite!
+Alerta do Banco do Brasil: Transação de R$150,00 realizada no débito. Saldo atual: R$2.345,00.
+Medium Daily Digest: 5 articles recommended for you based on your reading history.
+Nota fiscal eletrônica disponível. Acesse o portal para download do XML e DANFE.
+Seu plano de saúde Unimed foi atualizado. Novos exames cobertos a partir de abril.
+Uber: Sua corrida de ontem custou R$23,50. Avalie seu motorista.
+Comunicado do síndico: Assembleia do condomínio marcada para sábado, 10h, no salão de festas.
+Google Drive: Você está usando 80% do seu armazenamento. Considere fazer upgrade do plano.
+Olá! Obrigado por se inscrever na nossa lista de e-mails. Aqui está seu e-book gratuito.
+Resultado do exame de sangue disponível. Acesse o portal do laboratório para visualizar.
+Black Friday antecipada: Até 70% de desconto em eletrônicos na Kabum. Só hoje!
+Relatório semanal do Google Analytics: Seu site recebeu 1.234 visitas esta semana.
+Aviso de manutenção programada: O sistema ficará indisponível das 2h às 6h de domingo.
+Seu ingresso para o show foi confirmado. Apresente o QR code na entrada do evento.
+Telegram: Código de verificação 54321. Não compartilhe este código com ninguém.
+Compra aprovada: R$89,90 na Americanas.com. Previsão de entrega: 5 dias úteis.
+Notificação do Instagram: @maria_silva começou a seguir você.
+Resumo diário do Trello: 3 cards movidos, 2 comentários novos no board "Projeto X".
+Your Heroku app email-classifier has exceeded its free tier limits. Upgrade to continue.
+Conta de luz CPFL: R$234,56. Vencimento: 20/04. Acesse a segunda via pelo app.
+PyPI notification: New version of requests library available (v2.32.0). View changelog.
+Hospedagem Hostinger: Seu plano Premium expira em 30 dias. Renove com 20% de desconto.
+Calendário Google: Lembrete - Reunião de equipe amanhã às 10h. Link do Google Meet incluso.
+Doação recebida: Obrigado por contribuir R$50 para a campanha solidária. Recibo anexo.
+Spam detectado: Ganhe R$10.000 por dia trabalhando de casa! Clique aqui para saber mais.
+Aviso da escola: Reunião de pais marcada para quarta-feira às 19h. Presença obrigatória.
+Twitter/X: @tech_news mencionou você em um tweet. Veja o que disseram.
+Declaração do Imposto de Renda 2026: Prazo final em 30/04. Acesse o programa da Receita.
+App Store: Atualização disponível para 5 aplicativos no seu iPhone. Atualize agora.
+Feedback survey: How was your experience with our customer support? Rate us from 1-5.
+IPTU 2026: Guia de pagamento disponível. Parcela única com 5% de desconto até 31/03.
+Alerta meteorológico: Previsão de chuvas fortes na sua região nas próximas 24 horas.
+Seus pontos Livelo estão expirando! Resgate até 30/04 para não perder 5.000 pontos.
+Notification: Your cron job on VPS failed at 03:15 AM. Check logs for details.
+Convite de aniversário: Festa surpresa para o João no sábado. Confirme presença pelo WhatsApp.
+Atualização do Chrome: Versão 130 disponível com correções de segurança. Atualize agora.
+Extrato bancário de março disponível no app do Itaú. Acesse para conferir movimentações.
+Welcome to GitHub Copilot! Here are some tips to get started with AI pair programming.
+Agendamento confirmado: Consulta médica dia 10/04 às 15h. Dr. Silva, Clínica São Lucas.
+Pinterest: 25 novos pins recomendados para você baseados nos seus interesses.
+Sua encomenda internacional foi taxada pela Receita Federal. Valor do imposto: R$123,45.
+Resultado da Mega-Sena: 04 12 23 35 41 58. Confira se você foi premiado!
+Alteração de senha realizada com sucesso na sua conta do Mercado Pago.
+Novo episódio disponível: Podcast "Hipsters Ponto Tech" - Microsserviços na prática.
+Recibo de pagamento do aluguel referente a abril/2026. Valor: R$2.500,00.
+Slack notification: 15 unread messages in #general channel. Catch up now.
+Programa de fidelidade Smiles: Você acumulou 3.000 milhas este mês. Veja como usar.
+Aviso legal: Atualização na política de privacidade entra em vigor em 01/05/2026.
+DocuSign: Documento pendente de assinatura. Acesse o link para revisar e assinar.
+Pesquisa de satisfação: Como foi sua experiência na loja física? Responda em 2 minutos.
+Clube de leitura: O livro do mês é "O Programador Pragmático". Discussão na sexta-feira.
+Your Docker Hub image build has completed. Tag: email-classifier:latest.
+Fatura do plano de celular Vivo: R$79,90. Pagamento via débito automático em 05/04.
+Wordpress: Atualização de segurança crítica disponível. Atualize imediatamente.
+Comprovante de depósito: R$3.000,00 creditados na sua conta poupança Caixa.
