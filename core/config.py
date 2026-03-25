@@ -64,7 +64,7 @@ def load_config(env_path: str = ".env") -> AppConfig:
 def setup_logging(config: AppConfig) -> None:
     """Configure root logger with file and stderr handlers."""
     config.log_file.parent.mkdir(parents=True, exist_ok=True)
-
+    logging.getLogger("googleapiclient.discovery.cache").setLevel(logging.ERROR)  # Suppress verbose Google API logs
     logging.basicConfig(
         level=getattr(logging, config.log_level, logging.INFO),
         format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
