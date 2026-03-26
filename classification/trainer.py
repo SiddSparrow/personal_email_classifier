@@ -13,6 +13,8 @@ from sentence_transformers import SentenceTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score, StratifiedKFold
+from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline as ImbPipeline
 
 from core.config import load_config, setup_logging
 from preprocessing.preprocessor import NLPPreprocessor
@@ -70,15 +72,21 @@ def train_and_save(
     logger.info("Encoding training texts...")
     embeddings = encoder.encode(texts, show_progress_bar=True)
 
-    # Cross-validation on embeddings
+    # SMOTE + LogisticRegression pipeline
     min_class_count = min(labels.count(label) for label in set(labels))
     n_splits = min(5, min_class_count)
+    k_neighbors = min(5, min_class_count - 1)
 
-    clf = LogisticRegression(C=1.0, max_iter=1000, class_weight="balanced")
+    smote_clf = ImbPipeline([
+        ("smote", SMOTE(random_state=42, k_neighbors=k_neighbors)),
+        ("clf", LogisticRegression(C=1.0, max_iter=1000, class_weight="balanced")),
+    ])
+
+    logger.info(f"Applying SMOTE (k_neighbors={k_neighbors}) to balance classes")
 
     if n_splits >= 2:
         cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
-        scores = cross_val_score(clf, embeddings, labels, cv=cv, scoring="f1_weighted")
+        scores = cross_val_score(smote_clf, embeddings, labels, cv=cv, scoring="f1_weighted")
         logger.info(
             f"Cross-validation F1 (weighted): {scores.mean():.3f} (+/- {scores.std():.3f})"
         )
@@ -86,7 +94,8 @@ def train_and_save(
         logger.warning("Too few samples for cross-validation.")
 
     # Train on full dataset
-    clf.fit(embeddings, labels)
+    smote_clf.fit(embeddings, labels)
+    clf = smote_clf.named_steps["clf"]
     logger.info(f"Model trained. Classes: {list(clf.classes_)}")
 
     # Classification report on training data
