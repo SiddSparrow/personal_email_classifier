@@ -2,6 +2,7 @@ import logging
 from pathlib import Path
 
 import joblib
+from sentence_transformers import SentenceTransformer
 
 from core.interfaces import EmailClassifier, ClassificationResult
 
@@ -9,17 +10,22 @@ logger = logging.getLogger(__name__)
 
 
 class LogisticRegressionClassifier(EmailClassifier):
-    """Classifies text using a pre-trained scikit-learn Pipeline (TF-IDF + LogisticRegression)."""
+    """Classifies text using sentence-transformer embeddings + LogisticRegression."""
 
     def __init__(self, model_path: Path, confidence_threshold: float = 0.75) -> None:
         self._threshold = confidence_threshold
         logger.info(f"Loading model from {model_path}")
-        self._pipeline = joblib.load(model_path)
-        self._classes = list(self._pipeline.classes_)
+        model_data = joblib.load(model_path)
+        self._clf = model_data["classifier"]
+        self._classes = model_data["classes"]
+        model_name = model_data["model_name"]
+        logger.info(f"Loading sentence-transformer: {model_name}")
+        self._encoder = SentenceTransformer(model_name)
         logger.info(f"Model loaded. Classes: {self._classes}")
 
     def classify(self, text: str) -> ClassificationResult:
-        probas = self._pipeline.predict_proba([text])[0]
+        embedding = self._encoder.encode([text])
+        probas = self._clf.predict_proba(embedding)[0]
         predicted_idx = probas.argmax()
         category = self._classes[predicted_idx]
         confidence = float(probas[predicted_idx])

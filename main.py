@@ -126,7 +126,7 @@ def build_pipeline(config: AppConfig) -> EmailPipeline:
         token_file=config.gmail_token_file,
         query=config.gmail_query,
     )
-    preprocessor = NLPPreprocessor(use_stemmer=True)
+    preprocessor = NLPPreprocessor()
     classifier = LogisticRegressionClassifier(
         model_path=config.model_path,
         confidence_threshold=config.confidence_threshold,

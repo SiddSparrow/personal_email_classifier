@@ -8,16 +8,18 @@ import sys
 from pathlib import Path
 
 import joblib
-from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
 
 from core.config import load_config, setup_logging
 from preprocessing.preprocessor import NLPPreprocessor
 
 logger = logging.getLogger(__name__)
+
+EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"
 
 
 def load_training_data(
@@ -50,39 +52,33 @@ def load_training_data(
     return texts, labels
 
 
-def build_sklearn_pipeline() -> Pipeline:
-    """Build TF-IDF + Logistic Regression pipeline."""
-    return Pipeline([
-        ("tfidf", TfidfVectorizer(
-            ngram_range=(1, 2),
-            max_features=10000,
-            sublinear_tf=True,
-        )),
-        ("clf", LogisticRegression(C=1.0, max_iter=1000)),
-    ])
-
-
 def train_and_save(
     data_dir: Path = Path("data/train_data"),
     output_path: Path = Path("models/model.pkl"),
 ) -> None:
-    """Full training workflow: load data, cross-validate, train, save."""
-    preprocessor = NLPPreprocessor(use_stemmer=True)
+    """Full training workflow: load data, encode, cross-validate, train, save."""
+    preprocessor = NLPPreprocessor()
     texts, labels = load_training_data(data_dir, preprocessor)
 
     if len(set(labels)) < 2:
         logger.error("Need at least 2 classes to train. Check training data files.")
         sys.exit(1)
 
-    pipeline = build_sklearn_pipeline()
+    # Encode texts with sentence-transformer
+    logger.info(f"Loading sentence-transformer model: {EMBEDDING_MODEL}")
+    encoder = SentenceTransformer(EMBEDDING_MODEL)
+    logger.info("Encoding training texts...")
+    embeddings = encoder.encode(texts, show_progress_bar=True)
 
-    # Cross-validation
+    # Cross-validation on embeddings
     min_class_count = min(labels.count(label) for label in set(labels))
     n_splits = min(5, min_class_count)
 
+    clf = LogisticRegression(C=1.0, max_iter=1000, class_weight="balanced")
+
     if n_splits >= 2:
         cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
-        scores = cross_val_score(pipeline, texts, labels, cv=cv, scoring="f1_weighted")
+        scores = cross_val_score(clf, embeddings, labels, cv=cv, scoring="f1_weighted")
         logger.info(
             f"Cross-validation F1 (weighted): {scores.mean():.3f} (+/- {scores.std():.3f})"
         )
@@ -90,17 +86,22 @@ def train_and_save(
         logger.warning("Too few samples for cross-validation.")
 
     # Train on full dataset
-    pipeline.fit(texts, labels)
-    logger.info(f"Model trained. Classes: {list(pipeline.classes_)}")
+    clf.fit(embeddings, labels)
+    logger.info(f"Model trained. Classes: {list(clf.classes_)}")
 
-    # Classification report on training data (for quick sanity check)
-    predictions = pipeline.predict(texts)
+    # Classification report on training data
+    predictions = clf.predict(embeddings)
     report = classification_report(labels, predictions)
     logger.info(f"Training set classification report:\n{report}")
 
     # Save model
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(pipeline, output_path)
+    model_data = {
+        "classifier": clf,
+        "model_name": EMBEDDING_MODEL,
+        "classes": list(clf.classes_),
+    }
+    joblib.dump(model_data, output_path)
     logger.info(f"Model saved to {output_path}")
 
 
